@@ -1,6 +1,6 @@
-<h4>Formularios <small> Template </small></h4>
+<h4 class="mt-5">Formularios <small> Template </small></h4>
 <hr>
-<form autocomplete="off">
+<form autocomplete="off" (ngSubmit)="guardar( forma )" #forma="ngForm">
 
   <div>
 
@@ -10,7 +10,17 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Nombre">
+               name="nombre"
+               placeholder="Nombre"
+               [class.is-invalid]="nombre.invalid && nombre.touched"
+               [ngModel]="usuario.nombre" 
+               required
+               minlength="5"
+               #nombre="ngModel">
+
+               <small  *ngIf="nombre.invalid && nombre.touched"
+                    class="from-text text-danger">Ingrese 5 letras
+               </small>
       </div>
     </div>
 
@@ -20,7 +30,17 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Apellido">
+               name="apellido"
+               placeholder="Apellido"
+               [class.is-invalid]="apellido.invalid && apellido.touched"
+               [ngModel]="usuario.apellido" 
+               required
+               minlength="5"
+               #apellido="ngModel">
+
+               <small  *ngIf="apellido.invalid && apellido.touched"
+                    class="from-text text-danger"> Ingrese 5 letras
+               </small>
       </div>
     </div>
 
@@ -32,7 +52,17 @@
 
       <input class="form-control"
              type="email"
-             placeholder="Correo electrónico">
+             name="correo"
+             placeholder="Correo electrónico"
+             [class.is-invalid]="email.invalid && email.touched"
+             [ngModel]="usuario.email" 
+             pattern="[a-z0-9A-Z._%+-]+@[a-z0-9A-Z.-]+\.[a-z]{2,3}$"
+             required
+             #email="ngModel">
+
+             <small  *ngIf="email.invalid && email.touched"
+                    class="from-text text-danger">Ingrese un Correo valido
+            </small>
     </div>
   </div>
 

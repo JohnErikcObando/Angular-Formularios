@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule } from '@angular/forms'; // para que no se actualice la pag con el formulario
+import { HttpClientModule } from '@angular/common/http'; //para hacer peticiones Http
+
+
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateComponent } from './pages/template/template.component';
@@ -14,7 +20,9 @@ import { ReactiveComponent } from './pages/reactive/reactive.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
